@@ -1,0 +1,35 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/pipeline', label: 'Pipeline' },
+  { href: '/plan', label: 'Plan' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="border-b border-gray-800 px-6 py-4">
+  <div class="max-w-5xl mx-auto flex items-center justify-between">
+    <a href="/" class="text-lg font-semibold tracking-tight text-white hover:text-indigo-400 transition-colors">
+      g8slab
+    </a>
+    <ul class="flex gap-6">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-sm transition-colors ${
+              currentPath === link.href
+                ? 'text-indigo-400'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

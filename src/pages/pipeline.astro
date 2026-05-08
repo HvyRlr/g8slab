@@ -1,0 +1,115 @@
+---
+import Page from '../layouts/Page.astro';
+
+const stages = [
+  {
+    name: 'Interviewer',
+    role: 'Entry point',
+    status: 'Live',
+    description: 'Conducts structured discovery interviews with clients. Produces AI Opportunity Maps that identify where AI can add value, with prioritised opportunities, expected impact, and a 90-day action plan.',
+    capabilities: ['AI Discovery interviews', 'Subject Research (LinkedIn + company)', 'Content Repurposing interviews', 'Multi-cycle follow-up sessions'],
+  },
+  {
+    name: 'Solution Designer',
+    role: 'Bridge',
+    status: 'Planned',
+    description: 'Transforms Interviewer output into a structured solution design — architecture decisions, tech stack recommendations, user stories, and component breakdowns.',
+    capabilities: ['Requirements → architecture', 'Tech stack selection', 'User story generation', 'Component breakdown'],
+  },
+  {
+    name: 'Pipeline Orchestrator',
+    role: 'Glue',
+    status: 'Planned',
+    description: 'The meta-agent that runs the pipeline itself. Knows what phase a project is in, what needs to happen next, and routes work between agents.',
+    capabilities: ['Phase tracking', 'Agent coordination', 'Handoff management', 'Status dashboard'],
+  },
+  {
+    name: 'Software Factory',
+    role: 'Engine',
+    status: 'Building',
+    description: 'A five-agent pipeline that builds, tests, and critiques solutions. Generates → Tests → Critiques → Iterates without manual intervention between stages.',
+    capabilities: ['Spec agent', 'Architect agent', 'Builder agent', 'Test agent (domain-aware)', 'Critic agent (adversarial)'],
+  },
+  {
+    name: 'Website Builder',
+    role: 'Delivery',
+    status: 'Building',
+    description: 'Designs, scaffolds, and deploys websites. Starting with this portfolio. Progresses to client-facing delivery with AI-powered pages.',
+    capabilities: ['Astro + Tailwind scaffold', 'Page generation', 'Vercel deployment', 'g8slab.com'],
+  },
+];
+---
+
+<Page title="Pipeline" description="The AI Agency Pipeline — architecture and status">
+  <div class="mb-12">
+    <h1 class="text-5xl font-bold text-white mb-4">The AI Agency Pipeline</h1>
+    <p class="text-lg text-gray-400 max-w-2xl">
+      A fully automated workflow from client discovery to deployed solution.
+      Each component owns one phase of the lifecycle and hands off to the next.
+    </p>
+  </div>
+
+  <!-- Architecture diagram -->
+  <div class="border border-gray-800 rounded-lg p-6 mb-12 overflow-x-auto">
+    <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Architecture</p>
+    <div class="flex items-center gap-2 text-sm text-gray-300 flex-wrap">
+      {stages.map((stage, i) => (
+        <>
+          <span class={`px-3 py-1.5 rounded border text-xs font-medium ${
+            stage.status === 'Live' ? 'border-emerald-700 text-emerald-400 bg-emerald-950' :
+            stage.status === 'Building' ? 'border-indigo-700 text-indigo-400 bg-indigo-950' :
+            'border-gray-700 text-gray-500 bg-gray-900'
+          }`}>{stage.name}</span>
+          {i < stages.length - 1 && <span class="text-gray-700">→</span>}
+        </>
+      ))}
+    </div>
+    <div class="mt-4 pt-4 border-t border-gray-800 text-center text-xs text-gray-600">
+      ↑ All components read from and write back to <span class="text-gray-400">Learn & Retain — Knowledge Base</span>
+    </div>
+  </div>
+
+  <!-- Stage detail cards -->
+  <div class="space-y-4">
+    {stages.map(stage => (
+      <div class="border border-gray-800 rounded-lg p-6 hover:border-gray-700 transition-colors">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <h2 class="text-lg font-semibold text-white">{stage.name}</h2>
+              <span class={`text-xs px-2 py-0.5 rounded-full ${
+                stage.status === 'Live' ? 'bg-emerald-900 text-emerald-400' :
+                stage.status === 'Building' ? 'bg-indigo-900 text-indigo-400' :
+                'bg-gray-800 text-gray-500'
+              }`}>{stage.status}</span>
+            </div>
+            <p class="text-xs text-gray-600 uppercase tracking-widest">{stage.role}</p>
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm mb-4">{stage.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {stage.capabilities.map(cap => (
+            <span class="text-xs px-2 py-1 bg-gray-900 border border-gray-800 text-gray-500 rounded">{cap}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Learn & Retain -->
+  <div class="mt-4 border border-gray-800 rounded-lg p-6 bg-gray-900/30">
+    <div class="flex items-center gap-3 mb-2">
+      <h2 class="text-lg font-semibold text-white">Learn & Retain</h2>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-900 text-emerald-400">Live</span>
+    </div>
+    <p class="text-xs text-gray-600 uppercase tracking-widest mb-3">Knowledge Base — SSOT for the entire pipeline</p>
+    <p class="text-gray-400 text-sm mb-4">
+      The persistent knowledge layer every pipeline component depends on. Ingests from YouTube, AI tool output, research reports, and project retrospectives. Every project reads from it before starting; writes back when done.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {['YouTube ingestion', 'AI tool output ingestion', '6 KB entries', 'Hybrid Obsidian + Chroma (staged)'].map(cap => (
+        <span class="text-xs px-2 py-1 bg-gray-900 border border-gray-800 text-gray-500 rounded">{cap}</span>
+      ))}
+    </div>
+  </div>
+</Page>

@@ -1,0 +1,67 @@
+---
+import Page from '../layouts/Page.astro';
+---
+
+<Page title="About" description="About HvyRlr — AI Architect & Builder">
+  <div class="max-w-2xl">
+    <h1 class="text-5xl font-bold text-white mb-6">About</h1>
+
+    <div class="prose prose-invert prose-lg">
+      <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+        I'm an experienced technology consultant learning as much as possible about
+        Agentic AI by building working agentic systems.
+      </p>
+
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        The governing principle: this work exists to <strong class="text-gray-200">produce things, not just store things</strong>.
+        Every project in the pipeline is a real deliverable — working code, live interviews,
+        structured knowledge, deployed sites.
+      </p>
+
+      <h2 class="text-xl font-semibold text-white mt-10 mb-4">What I'm building</h2>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        The AI Agency Pipeline is a fully (or highly) automated workflow covering the complete
+        ideation-to-deployment lifecycle for technology solutions. A client need or idea goes in
+        one end; a working, deployed solution comes out the other — with minimal human intervention.
+      </p>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        I'm building it by building with it. Every component is designed and tested on real
+        problems — client discovery interviews, knowledge ingestion, automated pipelines,
+        and this website.
+      </p>
+
+      <h2 class="text-xl font-semibold text-white mt-10 mb-4">Design principles</h2>
+      <div class="space-y-4">
+        <div class="border-l-2 border-indigo-700 pl-4">
+          <p class="text-white font-medium mb-1">Agile</p>
+          <p class="text-gray-400 text-sm">Build only what's needed to accomplish the current goal. Identify extension paths but don't build them until the problem is real.</p>
+        </div>
+        <div class="border-l-2 border-indigo-700 pl-4">
+          <p class="text-white font-medium mb-1">Maintainability</p>
+          <p class="text-gray-400 text-sm">Every design decision addresses how the component will be maintained over time. Design for operability, not just functionality.</p>
+        </div>
+        <div class="border-l-2 border-indigo-700 pl-4">
+          <p class="text-white font-medium mb-1">Single Source of Truth</p>
+          <p class="text-gray-400 text-sm">The Learn & Retain KB is the SSOT for the entire pipeline. All projects read from it before starting, write back when done.</p>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-semibold text-white mt-10 mb-4">Tech stack</h2>
+      <div class="grid grid-cols-2 gap-3">
+        {[
+          ['AI / Intelligence', 'Anthropic API, Claude Code, Claude Sonnet & Haiku'],
+          ['Knowledge', 'Obsidian vault, Chroma vector DB (planned)'],
+          ['Data Processing', 'Python 3.14, youtube-transcript-api, yt-dlp'],
+          ['DevOps', 'GitHub, Vercel, GitHub Actions'],
+          ['Web', 'Astro, Tailwind CSS'],
+          ['Infrastructure', 'macOS, cron, Python venv'],
+        ].map(([layer, tech]) => (
+          <div class="bg-gray-900 rounded p-3">
+            <p class="text-xs text-gray-600 uppercase tracking-wide mb-1">{layer}</p>
+            <p class="text-sm text-gray-400">{tech}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Page>

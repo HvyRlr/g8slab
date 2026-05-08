@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Home" description="HvyRlr — building the AI Agency Pipeline">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 py-24">
+    <p class="text-indigo-400 text-sm font-medium tracking-widest uppercase mb-4">AI Architect & Builder</p>
+    <h1 class="text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
+      Building the AI Agency Pipeline
+    </h1>
+    <p class="text-xl text-gray-400 max-w-2xl mb-10">
+      A fully automated workflow from client discovery to deployed solution —
+      powered by interconnected AI agents, a persistent knowledge base, and
+      minimal human intervention.
+    </p>
+    <div class="flex gap-4">
+      <a href="/pipeline" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors">
+        See the Pipeline
+      </a>
+      <a href="/projects" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white text-sm font-medium rounded-lg transition-colors">
+        View Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- Results strip -->
+  <section class="border-t border-b border-gray-800 py-10">
+    <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-3xl font-bold text-white mb-1">6</div>
+        <div class="text-sm text-gray-500">Pipeline projects designed</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold text-white mb-1">647</div>
+        <div class="text-sm text-gray-500">Notes processed & tagged</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold text-white mb-1">6</div>
+        <div class="text-sm text-gray-500">KB entries ingested</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold text-white mb-1">1</div>
+        <div class="text-sm text-gray-500">Live client interview</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I'm building -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-2xl font-bold text-white mb-3">What I'm building</h2>
+    <p class="text-gray-400 mb-10 max-w-2xl">
+      Each component of the pipeline handles one phase of the client engagement lifecycle.
+    </p>
+    <div class="grid md:grid-cols-2 gap-4">
+      {[
+        { name: 'Interviewer', status: 'Live', desc: 'Structured client discovery. Produces AI Opportunity Maps.' },
+        { name: 'Learn & Retain', status: 'Live', desc: 'Persistent knowledge base. Every project reads from it, writes back to it.' },
+        { name: 'Software Factory', status: 'Building', desc: 'Five-agent build pipeline: Spec → Architect → Builder → Test → Critic.' },
+        { name: 'Website Builder', status: 'Building', desc: 'Design, scaffold, and deploy sites. Starting with this one.' },
+        { name: 'Solution Designer', status: 'Planned', desc: 'Transforms requirements into architecture and user stories.' },
+        { name: 'Pipeline Orchestrator', status: 'Planned', desc: 'Coordinates agents, tracks phases, manages handoffs.' },
+      ].map(item => (
+        <div class="border border-gray-800 rounded-lg p-5 hover:border-gray-700 transition-colors">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-medium text-white">{item.name}</span>
+            <span class={`text-xs px-2 py-0.5 rounded-full ${
+              item.status === 'Live' ? 'bg-emerald-900 text-emerald-400' :
+              item.status === 'Building' ? 'bg-indigo-900 text-indigo-400' :
+              'bg-gray-800 text-gray-500'
+            }`}>{item.status}</span>
+          </div>
+          <p class="text-sm text-gray-500">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</Base>
