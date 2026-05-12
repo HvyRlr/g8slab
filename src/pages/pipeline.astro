@@ -7,7 +7,7 @@ const stages = [
     role: 'Entry point',
     status: 'Live',
     description: 'Conducts structured discovery interviews with clients. Produces AI Opportunity Maps that identify where AI can add value, with prioritised opportunities, expected impact, and a 90-day action plan.',
-    capabilities: ['AI Discovery interviews', 'Subject Research (LinkedIn + company)', 'Content Repurposing interviews', 'Multi-cycle follow-up sessions'],
+    capabilities: ['AI Discovery interviews', 'Content Repurposing interviews', 'Requirements Gathering interviews', 'Subject Research (LinkedIn + company)', 'Assist Mode (HvyRlr-mediated)', 'PCM personality detection & adaptation', 'Multi-cycle follow-up sessions'],
   },
   {
     name: 'Solution Designer',
@@ -37,6 +37,27 @@ const stages = [
     description: 'Designs, scaffolds, and deploys websites. Starting with this portfolio. Progresses to client-facing delivery with AI-powered pages.',
     capabilities: ['Astro + Tailwind scaffold', 'Page generation', 'Vercel deployment', 'g8slab.com'],
   },
+  {
+    name: 'Researcher',
+    role: 'Pre-processing',
+    status: 'Designed',
+    description: 'Autonomous topic research agent. Given a topic, scope, and target media types, it searches the web, community discussions, and other sources — returning a structured report without human involvement during the run.',
+    capabilities: ['Topic + scope brief', 'Web + community search', 'Recency filtering', 'Structured research report', 'KB write-back'],
+  },
+  {
+    name: 'Content Creator',
+    role: 'Content delivery',
+    status: 'Designed',
+    description: 'Transforms Knowledge Base content into audience-facing content. v1 produces LinkedIn post series from KB entries. v2 expands to multi-platform social. v3 targets YouTube scripts and training curricula.',
+    capabilities: ['LinkedIn post series', 'KB-sourced content', 'Multi-platform social (v2)', 'YouTube scripts (v3)', 'Training curricula (v3)'],
+  },
+  {
+    name: 'Domain Accelerator',
+    role: 'Domain onboarding',
+    status: 'Designed',
+    description: 'Rapid domain onboarding from KB content or fresh ingestion. Given a niche or topic, produces a crash course package — concept brief, flashcard set, and self-quiz — so the pipeline is ready before client engagement.',
+    capabilities: ['Concept brief', 'Flashcard set', 'Self-quiz', 'KB-sourced or fresh ingestion', 'Stage 1 of Trainer product'],
+  },
 ];
 ---
 
@@ -58,6 +79,7 @@ const stages = [
           <span class={`px-3 py-1.5 rounded border text-xs font-medium ${
             stage.status === 'Live' ? 'border-emerald-700 text-emerald-400 bg-emerald-950' :
             stage.status === 'Building' ? 'border-indigo-700 text-indigo-400 bg-indigo-950' :
+            stage.status === 'Designed' ? 'border-violet-700 text-violet-400 bg-violet-950' :
             'border-gray-700 text-gray-500 bg-gray-900'
           }`}>{stage.name}</span>
           {i < stages.length - 1 && <span class="text-gray-700">→</span>}
@@ -80,6 +102,7 @@ const stages = [
               <span class={`text-xs px-2 py-0.5 rounded-full ${
                 stage.status === 'Live' ? 'bg-emerald-900 text-emerald-400' :
                 stage.status === 'Building' ? 'bg-indigo-900 text-indigo-400' :
+                stage.status === 'Designed' ? 'bg-violet-900 text-violet-400' :
                 'bg-gray-800 text-gray-500'
               }`}>{stage.status}</span>
             </div>
@@ -107,7 +130,7 @@ const stages = [
       The persistent knowledge layer every pipeline component depends on. Ingests from YouTube, AI tool output, research reports, and project retrospectives. Every project reads from it before starting; writes back when done.
     </p>
     <div class="flex flex-wrap gap-2">
-      {['YouTube ingestion', 'AI tool output ingestion', '6 KB entries', 'Hybrid Obsidian + Chroma (staged)'].map(cap => (
+      {['YouTube ingestion', 'AI tool output ingestion', 'Podcast ingestion (planned)', '10 KB entries', 'Hybrid Obsidian + Chroma (staged)', 'Session-start context injection'].map(cap => (
         <span class="text-xs px-2 py-1 bg-gray-900 border border-gray-800 text-gray-500 rounded">{cap}</span>
       ))}
     </div>

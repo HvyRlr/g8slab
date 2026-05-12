@@ -19,11 +19,19 @@ const projects = [
     tech: ['Claude Code', 'YouTube transcript API', 'Anthropic API'],
   },
   {
+    name: 'Requirements Gathering',
+    category: 'Interviewer',
+    status: 'Live',
+    description: 'Conducts a structured requirements discovery session for a technology product or feature. Produces a Requirements Document covering vision, feature definitions, platform constraints, and measurable success criteria.',
+    results: ['First session: defined full scope for a mobile timer app', 'Requirements Document covering vision, 8 feature definitions, platform constraints, and success criteria', 'Subject Research + PCM detection running in every session'],
+    tech: ['Claude Code', 'Anthropic API', 'Markdown specs'],
+  },
+  {
     name: 'Learn & Retain KB',
     category: 'Learn & Retain',
     status: 'Live',
     description: 'A persistent, agent-queryable knowledge base that ingests from YouTube playlists, AI tool output, and research reports. Synthesises across sources and surfaces structured knowledge to all pipeline components.',
-    results: ['6 KB entries across YouTube + AI tool output sources', 'YouTube adapter: transcript → analysis → synthesis → KB entry', 'AI tool output adapter: paste or file → structured KB entry'],
+    results: ['10 KB entries across YouTube + AI tool output sources', 'YouTube adapter: transcript → analysis → synthesis → KB entry', 'AI tool output adapter: paste or file → structured KB entry', 'Session-start context injection — KB summaries loaded at /good-morning'],
     tech: ['Python', 'Anthropic API (Haiku + Sonnet)', 'Obsidian vault', 'youtube-transcript-api'],
   },
 ];
