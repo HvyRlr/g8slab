@@ -10,6 +10,13 @@ const stages = [
     capabilities: ['AI Discovery interviews', 'Content Repurposing interviews', 'Requirements Gathering interviews', 'Subject Research (LinkedIn + company)', 'Assist Mode (HvyRlr-mediated)', 'PCM personality detection & adaptation', 'Multi-cycle follow-up sessions'],
   },
   {
+    name: 'Appointment Scheduler',
+    role: 'End-of-flow scheduling',
+    status: 'Live',
+    description: 'Surfaces booking links at pipeline handoffs so contacts can schedule next steps without leaving the flow. Integrated with Cal.com and Google Calendar.',
+    capabilities: ['Cal.com integration', 'AI Discovery booking', 'Personal AI Crash Course booking', 'Follow-up & intro call types', 'g8slab.com embed'],
+  },
+  {
     name: 'Solution Designer',
     role: 'Bridge',
     status: 'Planned',
@@ -58,6 +65,20 @@ const stages = [
     description: 'Rapid domain onboarding from KB content or fresh ingestion. Given a niche or topic, produces a crash course package — concept brief, flashcard set, and self-quiz — so the pipeline is ready before client engagement.',
     capabilities: ['Concept brief', 'Flashcard set', 'Self-quiz', 'KB-sourced or fresh ingestion', 'Stage 1 of Trainer product'],
   },
+  {
+    name: 'Podcast Knowledge Extractor',
+    role: 'L&R ingestion adapter',
+    status: 'Designed',
+    description: 'Ingests podcast episodes into the knowledge base via Whisper transcription. Accepts episode URLs or RSS feeds and produces structured KB entries using the same pipeline as the YouTube ingestion adapter.',
+    capabilities: ['Episode URL + RSS feed input', 'Whisper transcription', 'KB entry generation', 'L&R pipeline integration'],
+  },
+  {
+    name: 'Maintenance Scheduler',
+    role: 'Meta-level OS maintenance',
+    status: 'Deferred',
+    description: 'Surfaces maintenance tasks not already handled by existing tooling — skill health checks, KB freshness audits, CLAUDE.md drift detection, and folder structure validation. Building only when the gap proves real.',
+    capabilities: ['Skill health monitoring', 'KB freshness audits', 'Pipeline drift detection', 'Folder structure validation'],
+  },
 ];
 ---
 
@@ -103,6 +124,7 @@ const stages = [
                 stage.status === 'Live' ? 'bg-emerald-900 text-emerald-400' :
                 stage.status === 'Building' ? 'bg-indigo-900 text-indigo-400' :
                 stage.status === 'Designed' ? 'bg-violet-900 text-violet-400' :
+                stage.status === 'Deferred' ? 'bg-gray-800 text-gray-600' :
                 'bg-gray-800 text-gray-500'
               }`}>{stage.status}</span>
             </div>
@@ -130,7 +152,7 @@ const stages = [
       The persistent knowledge layer every pipeline component depends on. Ingests from YouTube, AI tool output, research reports, and project retrospectives. Every project reads from it before starting; writes back when done.
     </p>
     <div class="flex flex-wrap gap-2">
-      {['YouTube ingestion', 'AI tool output ingestion', 'Podcast ingestion (planned)', '10 KB entries', 'Hybrid Obsidian + Chroma (staged)', 'Session-start context injection'].map(cap => (
+      {['YouTube ingestion', 'AI tool output ingestion', 'Podcast ingestion (designed)', '11 KB entries across 6 domains', 'Hybrid Obsidian + Chroma (staged)', 'Session-start context injection'].map(cap => (
         <span class="text-xs px-2 py-1 bg-gray-900 border border-gray-800 text-gray-500 rounded">{cap}</span>
       ))}
     </div>
