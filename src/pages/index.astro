@@ -22,8 +22,8 @@ import Footer from '../components/Footer.astro';
       <a href="/pipeline" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors">
         See the Pipeline
       </a>
-      <a href="/projects" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white text-sm font-medium rounded-lg transition-colors">
-        Projects (in progress)
+      <a href="/components" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white text-sm font-medium rounded-lg transition-colors">
+        Meet the Team
       </a>
     </div>
   </section>
@@ -59,13 +59,6 @@ import Footer from '../components/Footer.astro';
         { name: 'Appointment Scheduler', status: 'Live', desc: 'End-of-flow scheduling. Surfaces booking links at pipeline handoffs and on g8slab.com.' },
         { name: 'Software Factory', status: 'Building', desc: 'Five-agent build pipeline: Spec → Architect → Builder → Test → Critic.' },
         { name: 'Website Builder', status: 'Building', desc: 'Design, scaffold, and deploy sites. Starting with this one.' },
-        { name: 'Researcher', status: 'Designed', desc: 'Autonomous topic research across the web. No interview required — brief it and it runs.' },
-        { name: 'Content Creator', status: 'Designed', desc: 'Transforms KB knowledge into LinkedIn posts, social content, and long-form media.' },
-        { name: 'Domain Accelerator', status: 'Designed', desc: 'Crash course generator. Turns any niche into concept briefs, flashcards, and quizzes.' },
-        { name: 'Podcast Knowledge Extractor', status: 'Designed', desc: 'Ingests podcast audio via Whisper transcription into the knowledge base.' },
-        { name: 'Solution Designer', status: 'Planned', desc: 'Transforms requirements into architecture and user stories.' },
-        { name: 'Pipeline Orchestrator', status: 'Planned', desc: 'Coordinates agents, tracks phases, manages handoffs.' },
-        { name: 'Maintenance Scheduler', status: 'Deferred', desc: 'Meta-level OS maintenance — skill health, KB freshness, pipeline drift detection.' },
       ].map(item => (
         <div class="border border-gray-800 rounded-lg p-5 hover:border-gray-700 transition-colors">
           <div class="flex items-center justify-between mb-2">

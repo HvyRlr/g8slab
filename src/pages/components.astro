@@ -1,0 +1,129 @@
+---
+import Page from '../layouts/Page.astro';
+
+const components = [
+  {
+    name: 'Interviewer',
+    role: 'Pipeline entry point',
+    status: 'Live',
+    description: 'Conducts structured discovery interviews with clients and surfaces AI opportunities. Adapts communication style in real-time using Taibi Kahler\'s Process Communication Model (PCM) — detecting personality type from language signals and adjusting tone, framing, and pacing accordingly. Supports three live interview types, with Assist Mode enabling HvyRlr-mediated sessions where the client never interacts with Claude directly.',
+    capabilities: [
+      'AI Discovery — identifies where AI can add value to a client\'s role; produces a prioritised AI Opportunity Map with 90-day action plan',
+      'Content Repurposing — structures existing long-form content into LinkedIn posts, email sequences, and ebooks',
+      'Requirements Gathering — produces a full Requirements Document for a technology product or feature',
+      'PCM personality detection — passive inference from language signals; adapts question framing, tone, and pacing at working confidence',
+      'Subject Research — LinkedIn + company website research before every session; personalises the interview from the first question',
+      'Assist Mode — HvyRlr-mediated mode; pre-call generates a Call Guide (PCM watch-list, topic questions, checklist); post-call evaluates coverage and produces the deliverable from transcript or notes',
+      'Call Guide auto-generation — screen (HTML) and print (PDF) versions generated automatically',
+    ],
+    tech: ['Claude Code', 'Anthropic API', 'Playwright MCP', 'Fathom (transcription)'],
+  },
+  {
+    name: 'Learn & Retain',
+    role: 'Pipeline brain — knowledge base & SSOT',
+    status: 'Live',
+    description: 'The persistent knowledge layer every pipeline component depends on. Ingests from multiple source types, synthesises across them, and makes structured knowledge available to all pipeline components. Every project reads from the KB before starting; writes back when done. Currently holds 11 entries across 6 domains.',
+    capabilities: [
+      'YouTube ingestion — transcript fetch → AI analysis → synthesis → structured KB entry with 10+ key learnings',
+      'Single video ingestion — accepts individual YouTube URLs in addition to playlists',
+      'AI tool output ingestion — paste or file → structured KB entry (NotebookLM, Gemini, Perplexity, etc.)',
+      'Domain tagging — each entry tagged with a knowledge domain for cross-pipeline discoverability',
+      'Session-start context injection — KB summaries loaded at /good-morning so every session starts informed',
+      'KB Status dashboard — health snapshot via /kb-status skill',
+    ],
+    tech: ['Python', 'Anthropic API (Haiku + Sonnet)', 'youtube-transcript-api', 'Obsidian vault'],
+  },
+  {
+    name: 'Appointment Scheduler',
+    role: 'End-of-flow scheduling',
+    status: 'Live',
+    description: 'Surfaces booking links at pipeline handoffs so contacts can schedule next steps without dropping out of the workflow. Integrated with Cal.com (free tier) and Google Calendar. Four active meeting types covering the full client engagement lifecycle — from first contact to recurring follow-up.',
+    capabilities: [
+      'AI Discovery Call (60 min) — first-time client discovery session',
+      'Personal AI Crash Course (60 min) — repeatable monetisable course product',
+      'Follow-up Call (30 min) — post-discovery or post-deliverable check-in',
+      'Intro Chat (20 min) — lightweight first contact',
+      'Google Calendar sync — all bookings reflected in g8s·lab calendar',
+      'Fathom transcription — bot auto-joins every call, transcribes, and fires a webhook on meeting end',
+    ],
+    tech: ['Cal.com', 'Google Calendar', 'Fathom', 'Cloudflare Worker (webhook)'],
+  },
+  {
+    name: 'Software Factory',
+    role: 'Pipeline engine — build, test, deploy',
+    status: 'Building',
+    description: 'A multi-agent build pipeline that takes a spec and produces working, tested, deployed software — with minimal human intervention between stages. Path 3 (Hybrid) selected: adopts proven open-source agent patterns and skill libraries rather than building from scratch, while retaining architectural control. Phase 1 underway.',
+    capabilities: [
+      'Spec agent — translates requirements into a structured, machine-readable build spec',
+      'Architect agent — designs component structure, API contracts, and tech stack (Opus-tier)',
+      'Builder agent — implements the spec; iterates until tests pass (Sonnet-tier)',
+      'Test agent — domain-aware test generation; validates correctness and edge cases',
+      'Critic agent — adversarial review; surfaces gaps the Builder missed (Opus-tier)',
+      'Model-tier strategy — Opus for Architect + Critic; Sonnet for Builder + Test; Haiku for fast ops',
+    ],
+    tech: ['Claude Code', 'Anthropic API', 'Path 3 Hybrid (open-source skill libraries + custom orchestration)'],
+  },
+  {
+    name: 'Website Builder',
+    role: 'Pipeline delivery layer',
+    status: 'Building',
+    description: 'Designs, scaffolds, and deploys websites — starting with this one. The g8s·lab site is the live proof of concept: built entirely with Claude Code, deployed to Vercel, connected to a custom domain. Progresses to client-facing delivery with AI-powered pages and a /work-with-me services section.',
+    capabilities: [
+      'Astro + Tailwind CSS — static site framework with dark theme design system',
+      'Vercel deployment — automatic deploys on every git push to main',
+      'Custom domain — g8slab.com live with GoDaddy DNS',
+      'Multi-page architecture — Home, Components, Pipeline, Plan, About',
+      'Dark theme design system — consistent typography, color palette, and component library across all pages',
+    ],
+    tech: ['Astro', 'Tailwind CSS', 'Vercel', 'GoDaddy DNS', 'Claude Code'],
+  },
+];
+---
+
+<Page title="Components" description="The AI Agency Pipeline — active components">
+  <div class="mb-12">
+    <h1 class="text-5xl font-bold text-white mb-4">Components</h1>
+    <p class="text-lg text-gray-400 max-w-2xl">
+      The active components of the g8s·lab AI Agency Pipeline — built with Claude Code and the Anthropic API.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    {components.map(component => (
+      <div class="border border-gray-800 rounded-lg p-6 hover:border-gray-700 transition-colors">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <h2 class="text-xl font-semibold text-white">{component.name}</h2>
+              <span class={`text-xs px-2 py-0.5 rounded-full ${
+                component.status === 'Live' ? 'bg-emerald-900 text-emerald-400' :
+                'bg-indigo-900 text-indigo-400'
+              }`}>{component.status}</span>
+            </div>
+            <p class="text-xs text-gray-600 uppercase tracking-widest">{component.role}</p>
+          </div>
+        </div>
+
+        <p class="text-gray-400 text-sm mb-5">{component.description}</p>
+
+        <div class="mb-4">
+          <p class="text-xs text-gray-600 uppercase tracking-widest mb-2">Capabilities</p>
+          <ul class="space-y-1.5">
+            {component.capabilities.map(cap => (
+              <li class="text-sm text-gray-400 flex gap-2">
+                <span class="text-emerald-500 flex-shrink-0 mt-0.5">→</span>
+                {cap}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          {component.tech.map(t => (
+            <span class="text-xs px-2 py-1 bg-gray-900 border border-gray-800 text-gray-500 rounded">{t}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</Page>
